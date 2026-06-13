@@ -3,37 +3,48 @@
 <head>
   <!--
   ============================================================
-  PERSONALIZA ESTO ANTES DE PUBLICAR (Ctrl + F)
+  GUÍA RÁPIDA
   ============================================================
-  1) FORMULARIO (Formspree)
-     - Crea una cuenta en https://formspree.io
-     - Reemplaza TU_FORM_ID en el action del formulario
 
-  2) FOTO DE PERFIL
+  📅 ACTUALIZACIÓN SEMANAL — lo ÚNICO que tocas cada semana
+     Busca "PORTFOLIO_DATA" dentro del <script>, al final del
+     archivo. Ahí están TODOS los números: posiciones,
+     rendimiento mensual, YTD y los stats del header. El ticker,
+     las tarjetas de meses y las posiciones se generan solos
+     desde ahí. Cambia solo esos valores — nada de HTML ni CSS.
+
+     (eToro no tiene API pública para Popular Investors, así
+     que sigues sacando estos números tú mismo de tu app — pero
+     ahora es lo único manual.)
+
+  ⚙️ CONFIGURACIÓN INICIAL
+  1) FORMULARIO (Formspree) — ya configurado ✅
+     Endpoint: formspree.io/f/xqeoyrdz
+
+  2) FOTO DE PERFIL (opcional)
      - Si quieres foto real, cambia:
-       <div class="about__avatar">AR</div>
+       <div class="about__avatar" aria-hidden="true">AR</div>
        por:
-       <img class="about__avatar" src="img/perfil.jpg" alt="Foto de Andrésminio.com/ por tu URL real
+       <img class="about__avatar" src="img/perfil.jpg" alt="Foto de Andrés Rodríguez Lozano">
 
-  4) REDES Y CONTACTO
-     - Verifica y actualiza todos los enlaces
-     - Ajusta email / teléfono
+  3) REDES Y CONTACTO — ya actualizados ✅
+     Revisa de vez en cuando que sigan vigentes
   ============================================================
   -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrés Rodríguez Lozano (@Andalejo1109) | Perfil público eToro</title>
+  <title>Alejandro Rodríguez Lozano (@Andalejo1109) | Perfil público eToro</title>
   <meta name="description" content="Perfil público con estrategia, composición de cartera, resultados históricos y formas de contacto." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tu-dominio.com/" />
+  <link rel="canonical" href="https://andalejo1109.github.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Andrés Rodríguez Lozano (@Andalejo1109) — Perfil público eToro" />
+  <meta property="og:title" content="Alejandro Rodríguez Lozano (@Andalejo1109) — Perfil público eToro" />
   <meta property="og:description" content="Estrategia, composición de cartera, resultados históricos y formas de contacto." />
   <meta property="og:locale" content="es_CO" />
-  <meta property="og:url" content="https://tu-dominio.com/" />
+  <meta property="og:url" content="https://andalejo1109.github.io/" />
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>" />
 
@@ -48,10 +59,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Andrés Rodríguez Lozano",
+    "name": "Alejandro Rodríguez Lozano",
     "alternateName": "@Andalejo1109",
     "nationality": "Colombia",
     "description": "Perfil público de inversión con estrategia basada en una cartera diversificada.",
+    "url": "https://andalejo1109.github.io/",
     "sameAs": [
       "https://www.etoro.com/es/people/andalejo1109",
       "https://instagram.com/andalejo",
@@ -68,7 +80,6 @@
       --bg:#0B0E14;
       --bg-soft:#11151F;
       --surface:#161B27;
-      --surface-2:#1A2231;
       --border:#262E40;
       --text:#ECEFF4;
       --text-muted:#8993A8;
@@ -83,7 +94,6 @@
       --font-mono:'IBM Plex Mono',monospace;
 
       --radius:14px;
-      --radius-lg:20px;
       --container:1100px;
       --nav-h:72px;
     }
@@ -653,6 +663,8 @@
       text-align:right;
     }
 
+    .position__gain.neg{color:var(--red);}
+
     .position__bar-track{
       height:4px;
       background:var(--bg-soft);
@@ -1052,23 +1064,11 @@
     </div>
   </div>
 
-  <!-- ================= TICKER ================= -->
+  <!-- ================= TICKER (generado desde PORTFOLIO_DATA) ================= -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <div class="ticker__group">
-        <span class="ticker__item"><strong>SPYG</strong> <span class="up">▲ +50.31%</span></span>
-        <span class="ticker__item"><strong>BRK.B</strong> <span class="up">▲ +12.96%</span></span>
-        <span class="ticker__item"><strong>IEMG</strong> <span class="up">▲ +11.72%</span></span>
-        <span class="ticker__item"><strong>SMH</strong> <span class="up">▲ +134.37%</span></span>
-        <span class="ticker__item"><strong>VTI</strong> <span class="up">▲ +65.63%</span></span>
-      </div>
-      <div class="ticker__group">
-        <span class="ticker__item"><strong>SPYG</strong> <span class="up">▲ +50.31%</span></span>
-        <span class="ticker__item"><strong>BRK.B</strong> <span class="up">▲ +12.96%</span></span>
-        <span class="ticker__item"><strong>IEMG</strong> <span class="up">▲ +11.72%</span></span>
-        <span class="ticker__item"><strong>SMH</strong> <span class="up">▲ +134.37%</span></span>
-        <span class="ticker__item"><strong>VTI</strong> <span class="up">▲ +65.63%</span></span>
-      </div>
+      <div class="ticker__group" data-ticker-group></div>
+      <div class="ticker__group" data-ticker-group></div>
     </div>
   </div>
 
@@ -1076,7 +1076,7 @@
     <!-- ================= HERO ================= -->
     <header class="hero">
       <span class="badge reveal">PERFIL PÚBLICO · INVERSIÓN A LARGO PLAZO</span>
-      <h1 class="reveal">Andrés Rodríguez Lozano</h1>
+      <h1 class="reveal">Alejandro Rodríguez Lozano</h1>
       <p class="handle reveal"><span class="green">@Andalejo1109</span> — Perfil visible en eToro</p>
       <p class="lead reveal">
         Esta página resume la composición de la cartera, resultados históricos visibles y formas de contacto.
@@ -1085,15 +1085,15 @@
 
       <div class="hero__stats reveal">
         <div class="stat">
-          <div class="stat__value">28</div>
+          <div class="stat__value" id="stat-followers">—</div>
           <div class="stat__label">Inversores que le copian</div>
         </div>
         <div class="stat">
-          <div class="stat__value">$64.5K</div>
+          <div class="stat__value" id="stat-aum">—</div>
           <div class="stat__label">Activos bajo copia</div>
         </div>
         <div class="stat">
-          <div class="stat__value">4/10</div>
+          <div class="stat__value" id="stat-risk">—</div>
           <div class="stat__label">Puntuación de riesgo</div>
         </div>
       </div>
@@ -1109,7 +1109,7 @@
       </div>
     </header>
 
-    <!-- ================= RESULTADOS ================= -->
+    <!-- ================= RESULTADOS (generado desde PORTFOLIO_DATA) ================= -->
     <section id="resultados" class="section">
       <span class="eyebrow reveal">Resultados</span>
       <h2 class="reveal">Los números, de forma transparente</h2>
@@ -1119,38 +1119,25 @@
 
       <div class="results-top reveal">
         <article class="stat-card card">
-          <div class="value">+17.06%</div>
+          <div class="value" id="stat-ytd">—</div>
           <div class="label">Rentabilidad acumulada 2026</div>
         </article>
         <article class="stat-card card">
-          <div class="value">+17.24%</div>
+          <div class="value" id="stat-6m">—</div>
           <div class="label">Rentabilidad últimos 6 meses</div>
         </article>
       </div>
 
-      <div class="months-grid reveal">
-        <article class="month-card card">
-          <div class="m">Abril</div>
-          <div class="v pos">+13.55%</div>
-        </article>
-        <article class="month-card card">
-          <div class="m">Mayo</div>
-          <div class="v pos">+8.03%</div>
-        </article>
-        <article class="month-card card">
-          <div class="m">Junio</div>
-          <div class="v neg">−1.53%</div>
-        </article>
-      </div>
+      <div class="months-grid reveal" id="months-grid"></div>
 
       <p class="note reveal">
-        Datos visibles del perfil público, actualizados manualmente al 9 de junio de 2026 ·
+        Datos visibles del perfil público, actualizados manualmente al <span id="last-updated">—</span> ·
         <a href="https://etoro.tw/4lkmjxn" target="_blank" rel="noopener">ver perfil actualizado →</a><br>
         La rentabilidad pasada no garantiza resultados futuros.
       </p>
     </section>
 
-    <!-- ================= ESTRATEGIA ================= -->
+    <!-- ================= ESTRATEGIA (generado desde PORTFOLIO_DATA) ================= -->
     <section id="estrategia" class="section">
       <span class="eyebrow reveal">Estrategia</span>
       <h2 class="reveal">Cinco posiciones, una idea clara</h2>
@@ -1159,92 +1146,7 @@
         Mantiene un perfil de riesgo moderado y un enfoque de baja rotación.
       </p>
 
-      <div class="positions reveal">
-        <article class="position card">
-          <div class="position__row">
-            <div class="position__id">
-              <span class="position__ticker">SPYG</span>
-              <span class="position__name">SPDR Portfolio S&amp;P 500 Growth ETF</span>
-            </div>
-            <div class="position__nums">
-              <div class="position__alloc">
-                <span class="pct">31.31%</span>
-                <span class="lbl">Invertido</span>
-              </div>
-              <div class="position__gain">+50.31%</div>
-            </div>
-          </div>
-          <div class="position__bar-track"><div class="position__bar" style="width:31.31%"></div></div>
-        </article>
-
-        <article class="position card">
-          <div class="position__row">
-            <div class="position__id">
-              <span class="position__ticker">BRK.B</span>
-              <span class="position__name">Berkshire Hathaway Inc.</span>
-            </div>
-            <div class="position__nums">
-              <div class="position__alloc">
-                <span class="pct">27.21%</span>
-                <span class="lbl">Invertido</span>
-              </div>
-              <div class="position__gain">+12.96%</div>
-            </div>
-          </div>
-          <div class="position__bar-track"><div class="position__bar" style="width:27.21%"></div></div>
-        </article>
-
-        <article class="position card">
-          <div class="position__row">
-            <div class="position__id">
-              <span class="position__ticker">IEMG</span>
-              <span class="position__name">iShares Core MSCI Emerging Markets ETF</span>
-            </div>
-            <div class="position__nums">
-              <div class="position__alloc">
-                <span class="pct">20.17%</span>
-                <span class="lbl">Invertido</span>
-              </div>
-              <div class="position__gain">+11.72%</div>
-            </div>
-          </div>
-          <div class="position__bar-track"><div class="position__bar" style="width:20.17%"></div></div>
-        </article>
-
-        <article class="position card">
-          <div class="position__row">
-            <div class="position__id">
-              <span class="position__ticker">SMH</span>
-              <span class="position__name">VanEck Semiconductor ETF</span>
-            </div>
-            <div class="position__nums">
-              <div class="position__alloc">
-                <span class="pct">14.27%</span>
-                <span class="lbl">Invertido</span>
-              </div>
-              <div class="position__gain">+134.37%</div>
-            </div>
-          </div>
-          <div class="position__bar-track"><div class="position__bar" style="width:14.27%"></div></div>
-        </article>
-
-        <article class="position card">
-          <div class="position__row">
-            <div class="position__id">
-              <span class="position__ticker">VTI</span>
-              <span class="position__name">Vanguard Total Stock Market ETF</span>
-            </div>
-            <div class="position__nums">
-              <div class="position__alloc">
-                <span class="pct">7.04%</span>
-                <span class="lbl">Invertido</span>
-              </div>
-              <div class="position__gain">+65.63%</div>
-            </div>
-          </div>
-          <div class="position__bar-track"><div class="position__bar" style="width:7.04%"></div></div>
-        </article>
-      </div>
+      <div class="positions reveal" id="positions-list"></div>
     </section>
 
     <!-- ================= SOBRE MI ================= -->
@@ -1255,7 +1157,7 @@
         <div class="about__avatar" aria-hidden="true">AR</div>
         <div>
           <p>
-            Soy Andrés Rodríguez Lozano, inversor colombiano y usuario público en eToro con el nombre
+            Soy Alejandro Rodríguez Lozano, inversor colombiano y usuario público en eToro con el nombre
             <strong>@Andalejo1109</strong>. Esta página busca reunir en un solo lugar información visible del perfil,
             la composición de la cartera y los canales de contacto.
           </p>
@@ -1263,7 +1165,7 @@
             El enfoque es simple: pocas posiciones, horizonte de largo plazo, diversificación y control del riesgo.
             La intención es priorizar consistencia y claridad, evitando decisiones impulsivas de corto plazo.
           </p>
-          <p class="pull-quote">“Compro para quedarme. La paciencia es parte de la estrategia.”</p>
+          <p class="pull-quote">"Compro para quedarme. La paciencia es parte de la estrategia."</p>
         </div>
       </div>
     </section>
@@ -1417,17 +1319,17 @@
 
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="name" autocomplete="name" required />
           </div>
 
           <div class="form-group">
             <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
 
           <div class="form-group">
             <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone" placeholder="+57 300 000 0000" />
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+57 300 000 0000" />
           </div>
 
           <div class="form-group">
@@ -1451,10 +1353,104 @@
       Revisar un perfil público o seguir estrategias de terceros implica riesgo, incluida la posible pérdida del capital.
       La rentabilidad pasada no garantiza resultados futuros.
     </p>
-    <div class="copy">© 2026 Andrés Rodríguez Lozano · @Andalejo1109</div>
+    <div class="copy">© 2026 Alejandro Rodríguez Lozano · @Andalejo1109</div>
   </footer>
 
   <script>
+    /* ================================================================
+       PORTFOLIO_DATA — ÚNICO BLOQUE QUE EDITAS CADA SEMANA
+       ================================================================
+       - "followers", "aum", "riskScore": tarjetas del encabezado
+       - "ytd": rentabilidad acumulada del año (%)
+       - "sixMonth": rentabilidad de los últimos 6 meses (%)
+       - "months": tarjetas mensuales (agrega/quita meses libremente)
+       - "positions": tus posiciones públicas. "allocation" = % invertido,
+         "gain" = % de ganancia/pérdida de esa posición.
+         Los "allocation" deberían sumar ~100.
+       - "lastUpdated": fecha en texto, como la quieras mostrar
+       ================================================================ */
+    const PORTFOLIO_DATA = {
+      lastUpdated: "9 de junio de 2026",
+      followers: 28,
+      aum: "$64.5K",
+      riskScore: 4,
+      ytd: 17.06,
+      sixMonth: 17.24,
+      months: [
+        { label: "Abril", value: 13.55 },
+        { label: "Mayo",  value: 8.03 },
+        { label: "Junio", value: -1.53 }
+      ],
+      positions: [
+        { ticker: "SPYG",  name: "SPDR Portfolio S&P 500 Growth ETF",        allocation: 31.31, gain: 50.31 },
+        { ticker: "BRK.B", name: "Berkshire Hathaway Inc.",                  allocation: 27.21, gain: 12.96 },
+        { ticker: "IEMG",  name: "iShares Core MSCI Emerging Markets ETF",   allocation: 20.17, gain: 11.72 },
+        { ticker: "SMH",   name: "VanEck Semiconductor ETF",                 allocation: 14.27, gain: 134.37 },
+        { ticker: "VTI",   name: "Vanguard Total Stock Market ETF",          allocation: 7.04,  gain: 65.63 }
+      ]
+    };
+
+    function formatPct(v){
+      const abs = Math.abs(v).toFixed(2);
+      return v < 0 ? `−${abs}%` : `+${abs}%`;
+    }
+
+    function renderTicker(positions){
+      const items = positions.map(p => {
+        const positive = p.gain >= 0;
+        return `<span class="ticker__item"><strong>${p.ticker}</strong> <span class="${positive?'up':'down'}">${positive?'▲':'▼'} ${formatPct(p.gain)}</span></span>`;
+      }).join('');
+      document.querySelectorAll('[data-ticker-group]').forEach(g => g.innerHTML = items);
+    }
+
+    function renderHero(d){
+      document.getElementById('stat-followers').textContent = d.followers;
+      document.getElementById('stat-aum').textContent = d.aum;
+      document.getElementById('stat-risk').textContent = d.riskScore + '/10';
+    }
+
+    function renderResults(d){
+      document.getElementById('stat-ytd').textContent = formatPct(d.ytd);
+      document.getElementById('stat-6m').textContent = formatPct(d.sixMonth);
+      document.getElementById('last-updated').textContent = d.lastUpdated;
+
+      const grid = document.getElementById('months-grid');
+      grid.innerHTML = d.months.map(m => `
+        <article class="month-card card">
+          <div class="m">${m.label}</div>
+          <div class="v ${m.value>=0?'pos':'neg'}">${formatPct(m.value)}</div>
+        </article>`).join('');
+    }
+
+    function renderPositions(positions){
+      const container = document.getElementById('positions-list');
+      container.innerHTML = positions.map(p => {
+        const positive = p.gain >= 0;
+        return `
+        <article class="position card">
+          <div class="position__row">
+            <div class="position__id">
+              <span class="position__ticker">${p.ticker}</span>
+              <span class="position__name">${p.name}</span>
+            </div>
+            <div class="position__nums">
+              <div class="position__alloc"><span class="pct">${p.allocation.toFixed(2)}%</span><span class="lbl">Invertido</span></div>
+              <div class="position__gain ${positive?'':'neg'}">${formatPct(p.gain)}</div>
+            </div>
+          </div>
+          <div class="position__bar-track"><div class="position__bar" style="width:${p.allocation}%"></div></div>
+        </article>`;
+      }).join('');
+    }
+
+    function renderAll(){
+      renderTicker(PORTFOLIO_DATA.positions);
+      renderHero(PORTFOLIO_DATA);
+      renderResults(PORTFOLIO_DATA);
+      renderPositions(PORTFOLIO_DATA.positions);
+    }
+    renderAll();
+
     // -------------------------------
     // Contact form -> Formspree (AJAX)
     // -------------------------------
@@ -1464,12 +1460,6 @@
     if (form && formMsg) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        if (form.action.includes('TU_FORM_ID')) {
-          formMsg.textContent = 'Debes reemplazar TU_FORM_ID por tu endpoint real de Formspree.';
-          formMsg.className = 'form-msg error';
-          return;
-        }
 
         if (!form.checkValidity()) {
           formMsg.textContent = 'Por favor completa los campos obligatorios.';
